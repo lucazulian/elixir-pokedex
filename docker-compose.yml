@@ -1,0 +1,22 @@
+version: "3.7"
+
+services:
+  elixir_pokedex:
+    build:
+      context: ./
+      dockerfile: Dockerfile.dev
+    image: elixir_pokedex:latest
+    container_name: elixir_pokedex
+    working_dir: /app
+    command: tail -f /dev/null
+    security_opt:
+      - seccomp:unconfined
+    env_file:
+      - .env.dev
+    ports:
+      - 3000:3000
+      - 4369:4369
+    volumes:
+      - .:/app
+      - ./.volumes/elixir_pokedex/_build:/app/_build
+      - /var/run/docker.sock:/var/run/docker.sock

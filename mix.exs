@@ -11,6 +11,7 @@ defmodule ElixirPokedex.MixProject do
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps(),
+      dialyzer: dialyzer(),
       preferred_cli_env: preferred_cli_env(),
       test_coverage: [tool: ExCoveralls]
     ]
@@ -19,7 +20,7 @@ defmodule ElixirPokedex.MixProject do
   def application do
     [
       mod: {ElixirPokedex.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :os_mon]
     ]
   end
 
@@ -28,17 +29,17 @@ defmodule ElixirPokedex.MixProject do
 
   defp deps do
     [
-      {:phoenix, "~> 1.6.0"},
-      {:phoenix_live_dashboard, "~> 0.5"},
-      {:telemetry_metrics, "~> 0.6"},
-      {:telemetry_poller, "~> 1.0"},
+      {:credo, "~> 1.5", only: [:dev], runtime: false},
+      {:dialyxir, "~> 1.1", only: [:dev], runtime: false},
+      {:excoveralls, "~> 0.10", only: [:dev, :test]},
       {:gettext, "~> 0.18"},
       {:jason, "~> 1.2"},
-      {:plug_cowboy, "~> 2.5"},
-      {:excoveralls, "~> 0.10", only: [:dev, :test]},
       {:muzak, "~> 1.1"},
-      {:dialyxir, "~> 1.1", only: [:dev], runtime: false},
-      {:credo, "~> 1.5", only: [:dev], runtime: false}
+      {:phoenix, "~> 1.6.0"},
+      {:phoenix_live_dashboard, "~> 0.5"},
+      {:plug_cowboy, "~> 2.5"},
+      {:telemetry_metrics, "~> 0.6"},
+      {:telemetry_poller, "~> 1.0"}
     ]
   end
 
@@ -49,8 +50,21 @@ defmodule ElixirPokedex.MixProject do
         "dialyzer --format dialyzer"
       ],
       cover: ["coveralls"],
+      "cover.detail": "coveralls.detail",
+      cs: "compile --all-warnings --ignore-module-conflict --debug-info",
       "format.all": "format mix.exs 'lib/**/*.{ex,exs}' 'test/**/*.{ex,exs}' 'config/*.{ex,exs}'",
-      setup: ["deps.get"]
+      s: "phx.server",
+      setup: ["deps.get"],
+      t: "test --trace"
+    ]
+  end
+
+  defp dialyzer do
+    [
+      ignore_warnings: ".dialyzer_ignore.exs",
+      plt_add_apps: [:ex_unit, :jason, :mix],
+      plt_add_deps: :app_tree,
+      plt_file: {:no_warn, "priv/plts/crash_1_12_3_otp_24.plt"}
     ]
   end
 
@@ -60,7 +74,8 @@ defmodule ElixirPokedex.MixProject do
       cover: :test,
       "cover.detail": :test,
       "cover.html": :test,
-      muzak: :test
+      muzak: :test,
+      t: :test
     ]
   end
 end

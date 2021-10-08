@@ -5,8 +5,10 @@ defmodule ElixirPokedexWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/api", ElixirPokedexWeb do
+  scope "/", ElixirPokedexWeb.Controllers do
     pipe_through :api
+
+    get "/ping", Pokemon, :ping
   end
 
   # Enables LiveDashboard only for development

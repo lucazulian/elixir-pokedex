@@ -22,3 +22,15 @@ erl_crash.dump
 # Ignore package tarball (built via "mix hex.build").
 elixir_pokedex-*.tar
 
+# Ignore docker volumes
+.volumes/
+
+# Ignore PLTs files
+/priv/plts/*.plt
+/priv/plts/*.plt.hash
+
+# Ignore coveralls files
+excoveralls.*
+
+# TODO file for work-in-progress
+TODO
