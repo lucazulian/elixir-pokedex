@@ -36,7 +36,8 @@ defmodule ElixirPokedex.MixProject do
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
       {:excoveralls, "~> 0.10", only: [:dev, :test]},
-      {:muzak, "~> 1.1"}
+      {:muzak, "~> 1.1"},
+      {:dialyxir, "~> 1.1", only: [:dev], runtime: false}
     ]
   end
 
