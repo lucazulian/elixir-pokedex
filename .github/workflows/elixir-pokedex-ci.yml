@@ -1,0 +1,96 @@
+---
+name: elixir-pokedex-ci
+
+on:
+  push:
+    branches:
+      - '**'
+    tags:
+      - "*.*.*"
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build:
+    name: Build, test and check - OTP ${{ matrix.otp }} / Elixir ${{ matrix.elixir }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        otp: ['24.0.6']
+        elixir: ['1.12.3']
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Set up Elixir ${{matrix.elixir}}
+      uses: actions/setup-elixir@v1
+      with:
+        elixir-version: ${{ matrix.elixir }}
+        otp-version: ${{matrix.otp}}
+        experimental-otp: true
+
+    - name: Retrieve dependencies cache
+      id: mix-cache
+      uses: actions/cache@v2
+      with:
+        path: deps
+        key: ${{ runner.os }}-${{ matrix.otp }}-${{ matrix.elixir }}-mix-${{ hashFiles('**/mix.lock') }}
+        restore-keys: ${{ runner.os }}-mix
+
+    - name: Install dependencies
+      if: steps.mix-cache.outputs.cache-hit != 'true'
+      run: |
+        mix local.rebar --force
+        mix local.hex --force
+        mix deps.get
+
+    - name: Retrieve build cache
+      uses: actions/cache@v2
+      with:
+        path: _build
+        key: ${{ runner.os }}-${{ matrix.otp }}-${{ matrix.elixir }}-build-${{ hashFiles('**/mix.lock') }}
+        restore-keys: ${{ runner.os }}-build
+
+    - name: Check formatting
+      run: |
+        mix format --check-formatted
+
+    - name: Compile project
+      env:
+        SECRET_KEY_BASE: ${{ secrets.SECRET_KEY_BASE }}
+      run: |
+        MIX_ENV=test mix compile --warnings-as-errors
+        MIX_ENV=dev mix compile --warnings-as-errors
+        MIX_ENV=prod mix compile
+
+    - name: Start epmd
+      run: |
+        epmd -daemon
+
+    - name: Run tests + Coverage
+      run: |
+        mix coveralls
+
+    - name: Run mutation tests
+      run: |
+        mix muzak
+
+    - name: Retrieve Dialyzer PLT cache
+      uses: actions/cache@v2
+      id: plt-cache
+      with:
+        path: priv/plts
+        key: ${{ runner.os }}-${{ matrix.otp }}-${{ matrix.elixir }}-plts-${{ hashFiles('**/mix.lock') }}
+        restore-keys: ${{ runner.os }}-plts
+
+    - name: Create Dialyzer PLTs
+      if: steps.plt-cache.outputs.cache-hit != 'true'
+      run: |
+        mkdir -p priv/plts
+        mix dialyzer --plt
+
+    - name: Static code analysis
+      run: mix check
