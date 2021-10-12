@@ -25,7 +25,7 @@ help                           Get help information about make available command
 build                          Build all services containers
 delete                         Delete all containers, images and volumes
 halt                           Shoutdown all services containers
-shell                          Enter into crash service
+shell                          Enter into elixir_pokedex service
 start                          Start application
 up                             Start all services
 ```

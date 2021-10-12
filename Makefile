@@ -18,14 +18,14 @@ up:									## Start all services
 build:								## Build all services containers
 	docker-compose build
 
-shell: container-elixir_pokedex		## Enter into crash service
+shell: container-elixir_pokedex		## Enter into elixir_pokedex service
 	docker-compose exec elixir_pokedex bash
 
 halt:								## Shoutdown all services containers
 	docker-compose down
 
 delete: halt						## Delete all containers, images and volumes
-	@docker images -a | grep "crash" | awk '{print $3}' | xargs docker rmi -f | docker ps -a | grep "crash" | awk '{print $1}' | xargs docker rm -v
+	@docker images -a | grep "elixir_pokedex" | awk '{print $3}' | xargs docker rmi -f | docker ps -a | grep "elixir_pokedex" | awk '{print $1}' | xargs docker rm -v
 
 help:
 	@echo "Usage: make [command]"

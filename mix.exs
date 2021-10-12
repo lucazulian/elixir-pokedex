@@ -35,11 +35,13 @@ defmodule ElixirPokedex.MixProject do
       {:gettext, "~> 0.18"},
       {:jason, "~> 1.2"},
       {:muzak, "~> 1.1"},
+      {:noether, "~> 0.2.2"},
       {:phoenix, "~> 1.6.0"},
       {:phoenix_live_dashboard, "~> 0.5"},
       {:plug_cowboy, "~> 2.5"},
       {:telemetry_metrics, "~> 0.6"},
-      {:telemetry_poller, "~> 1.0"}
+      {:telemetry_poller, "~> 1.0"},
+      {:tesla, "~> 1.4"}
     ]
   end
 
@@ -64,7 +66,7 @@ defmodule ElixirPokedex.MixProject do
       ignore_warnings: ".dialyzer_ignore.exs",
       plt_add_apps: [:ex_unit, :jason, :mix],
       plt_add_deps: :app_tree,
-      plt_file: {:no_warn, "priv/plts/crash_1_12_3_otp_24.plt"}
+      plt_file: {:no_warn, "priv/plts/elixir_pokedex_1_12_3_otp_24.plt"}
     ]
   end
 
