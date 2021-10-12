@@ -4,7 +4,7 @@
   "coverage_options": {
     "treat_no_relevant_lines_as_covered": true,
     "output_dir": "cover/",
-    "minimum_coverage": 42
+    "minimum_coverage": 10
   },
 
   "skip_files": []
