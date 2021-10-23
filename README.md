@@ -3,11 +3,27 @@ Elixir fun Pokedex in the form of REST API
 
 [![CI](https://github.com/lucazulian/elixir-pokedex/actions/workflows/elixir-pokedex-ci.yml/badge.svg)](https://github.com/lucazulian/elixir-pokedex/actions/workflows/elixir-pokedex-ci.yml)
 
+## About the Application
+
+elixir-pokedex is a Elixir Phoenix API application that returns Pokemon information.
+
+The API has two main endpoints:
+- basic Pokemon information
+- basic Pokemon information with a "fun" translation of the Pokemon description
+
+
 ## Requirements
   
   - docker **20+**
   - docker-compose **1.29+**
   - GNU make **4+**
+
+The application requires Loki Docker plugin that can be installed using:
+
+``` bash
+docker plugin install grafana/loki-docker-driver:latest --alias loki --grant-all-permissions
+```
+
 
 ## Repository conventions
 

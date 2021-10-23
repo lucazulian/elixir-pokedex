@@ -7,6 +7,9 @@ defmodule ElixirPokedex.Application do
 
   @impl true
   def start(_type, _args) do
+    OpentelemetryPhoenix.setup()
+    OpentelemetryLoggerMetadata.setup()
+
     children = [
       # Start the Telemetry supervisor
       ElixirPokedexWeb.Telemetry,

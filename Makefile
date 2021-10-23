@@ -10,7 +10,7 @@ all: init
 init: up setup compile
 
 start: up setup compile				## Start application
-	docker-compose exec elixir_pokedex mix s
+	docker-compose exec elixir_pokedex mix serve
 
 up:									## Start all services
 	docker-compose up -d --remove-orphans

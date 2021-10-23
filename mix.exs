@@ -41,7 +41,13 @@ defmodule ElixirPokedex.MixProject do
       {:plug_cowboy, "~> 2.5"},
       {:telemetry_metrics, "~> 0.6"},
       {:telemetry_poller, "~> 1.0"},
-      {:tesla, "~> 1.4"}
+      {:tesla, "~> 1.4"},
+      {:hackney, "~> 1.17"},
+      {:opentelemetry_logger_metadata, "~> 0.1.0-rc"},
+      {:opentelemetry_exporter, "~> 1.0.0-rc.1"},
+      {:opentelemetry_ecto, "~> 1.0.0-rc.1"},
+      {:opentelemetry_phoenix, "~> 1.0.0-rc.2"},
+      {:opentelemetry, "~> 1.0.0-rc.2"}
     ]
   end
 
@@ -55,7 +61,7 @@ defmodule ElixirPokedex.MixProject do
       "cover.detail": "coveralls.detail",
       cs: "compile --all-warnings --ignore-module-conflict --debug-info",
       "format.all": "format mix.exs 'lib/**/*.{ex,exs}' 'test/**/*.{ex,exs}' 'config/*.{ex,exs}'",
-      s: "phx.server",
+      serve: "phx.server",
       setup: ["deps.get"],
       t: "test --trace"
     ]
