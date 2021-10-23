@@ -6,17 +6,19 @@ defmodule ElixirPokedex.Application do
   use Application
 
   @impl true
-  def start(_type, _args) do
-    OpentelemetryPhoenix.setup()
-    OpentelemetryLoggerMetadata.setup()
+  def start(_type, %{env: env}) do
+    instument_other_services(env)
 
     children = [
       # Start the Telemetry supervisor
       ElixirPokedexWeb.Telemetry,
+
       # Start the PubSub system
       {Phoenix.PubSub, name: ElixirPokedex.PubSub},
+
       # Start the Endpoint (http/https)
       ElixirPokedexWeb.Endpoint
+
       # Start a worker by calling: ElixirPokedex.Worker.start_link(arg)
       # {ElixirPokedex.Worker, arg}
     ]
@@ -33,5 +35,12 @@ defmodule ElixirPokedex.Application do
   def config_change(changed, _new, removed) do
     ElixirPokedexWeb.Endpoint.config_change(changed, removed)
     :ok
+  end
+
+  defp instument_other_services(:test), do: nil
+
+  defp instument_other_services(_) do
+    OpentelemetryPhoenix.setup()
+    OpentelemetryLoggerMetadata.setup()
   end
 end

@@ -3,11 +3,5 @@ defmodule ElixirPokedexWeb.Controllers.Pokemon do
 
   use Phoenix.Controller, namespace: ElixirPokedexWeb
 
-  def ping(conn, _params) do
-    send_resp(conn, 200, "pong")
-  end
-
-  def not_found(conn, _params) do
-    send_resp(conn, 404, "")
-  end
+  def ping(conn, _params), do: send_resp(conn, 200, "pong")
 end

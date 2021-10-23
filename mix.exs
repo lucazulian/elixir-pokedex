@@ -19,7 +19,7 @@ defmodule ElixirPokedex.MixProject do
 
   def application do
     [
-      mod: {ElixirPokedex.Application, []},
+      mod: {ElixirPokedex.Application, %{env: Mix.env()}},
       extra_applications: [:logger, :runtime_tools, :os_mon]
     ]
   end
@@ -72,7 +72,7 @@ defmodule ElixirPokedex.MixProject do
       ignore_warnings: ".dialyzer_ignore.exs",
       plt_add_apps: [:ex_unit, :jason, :mix],
       plt_add_deps: :app_tree,
-      plt_file: {:no_warn, "priv/plts/elixir_pokedex_1_12_3_otp_24.plt"}
+      plt_file: {:no_warn, "priv/plts/elixir_pokedex_1_12_3_otp_erts_12_0_4.plt"}
     ]
   end
 

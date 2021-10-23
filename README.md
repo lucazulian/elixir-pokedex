@@ -1,5 +1,5 @@
 # elixir-pokedex
-Elixir fun Pokedex in the form of REST API
+Elixir fun Pokedex in the form of REST API, with OpenTelemetry Monitoring and observability demo
 
 [![CI](https://github.com/lucazulian/elixir-pokedex/actions/workflows/elixir-pokedex-ci.yml/badge.svg)](https://github.com/lucazulian/elixir-pokedex/actions/workflows/elixir-pokedex-ci.yml)
 
