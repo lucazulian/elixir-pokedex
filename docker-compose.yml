@@ -26,18 +26,17 @@ services:
       options:
         loki-url: http://localhost:3100/loki/api/v1/push
 
-  # prometheus:
-  #   image: prom/prometheus:v2.20.1
-  #   ports:
-  #     - 9090:9090
-  #   volumes:
-  #     - ../shared_docker/prometheus/:/etc/prometheus/
-  #     - prometheus-data:/prometheus
-  #   command:
-  #     - '--config.file=/etc/prometheus/config.yml'
-  #     - '--storage.tsdb.path=/prometheus'
-  #     - '--web.console.libraries=/usr/share/prometheus/console_libraries'
-  #     - '--web.console.templates=/usr/share/prometheus/consoles'
+  prometheus:
+    image: prom/prometheus:v2.20.1
+    ports:
+      - 9090:9090
+    volumes:
+      - ./prometheus.yml/:/etc/prometheus/config.yml
+    command:
+      - '--config.file=/etc/prometheus/config.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/usr/share/prometheus/console_libraries'
+      - '--web.console.templates=/usr/share/prometheus/consoles'
 
   grafana:
     image: grafana/grafana:8.1.2

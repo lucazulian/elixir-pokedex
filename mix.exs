@@ -20,7 +20,7 @@ defmodule ElixirPokedex.MixProject do
   def application do
     [
       mod: {ElixirPokedex.Application, %{env: Mix.env()}},
-      extra_applications: [:logger, :runtime_tools, :os_mon]
+      extra_applications: [:logger, :runtime_tools, :os_mon, :prometheus_ex, :prometheus_plugs]
     ]
   end
 
@@ -47,7 +47,9 @@ defmodule ElixirPokedex.MixProject do
       {:opentelemetry_exporter, "~> 1.0.0-rc.1"},
       {:opentelemetry_ecto, "~> 1.0.0-rc.1"},
       {:opentelemetry_phoenix, "~> 1.0.0-rc.2"},
-      {:opentelemetry, "~> 1.0.0-rc.2"}
+      {:opentelemetry, "~> 1.0.0-rc.2"},
+      {:prometheus_ex, "~> 3.0"},
+      {:prometheus_plugs, "~> 1.1.1"}
     ]
   end
 

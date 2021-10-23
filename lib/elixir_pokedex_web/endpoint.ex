@@ -28,6 +28,8 @@ defmodule ElixirPokedexWeb.Endpoint do
     plug Phoenix.CodeReloader
   end
 
+  plug ElixirPokedexWeb.MetricsExporter
+
   plug Phoenix.LiveDashboard.RequestLogger,
     param_key: "request_logger",
     cookie_key: "request_logger"

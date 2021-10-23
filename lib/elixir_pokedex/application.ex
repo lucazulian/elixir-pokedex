@@ -42,5 +42,6 @@ defmodule ElixirPokedex.Application do
   defp instument_other_services(_) do
     OpentelemetryPhoenix.setup()
     OpentelemetryLoggerMetadata.setup()
+    ElixirPokedexWeb.MetricsExporter.setup()
   end
 end
