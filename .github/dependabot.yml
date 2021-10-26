@@ -1,9 +1,15 @@
 version: 2
 
 updates:
-- package-ecosystem: mix
-  directory: "/"
-  schedule:
-    interval: daily
-  open-pull-requests-limit: 5
-  insecure-external-code-execution: allow
+  - package-ecosystem: mix
+    directory: "/"
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 5
+    insecure-external-code-execution: allow
+
+  - package-ecosystem: docker
+    directory: "/"
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 5
