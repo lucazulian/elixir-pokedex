@@ -5,12 +5,15 @@
 # @version 0.1
 
 all: init
+.NOTPARALLEL:
 .PHONY: init start up build shell delete
+
+exec-in-docker = docker-compose exec elixir_pokedex
 
 init: up setup compile
 
 start: up setup compile				## Start application
-	docker-compose exec elixir_pokedex mix serve
+	${exec-in-docker} mix serve
 
 up:									## Start all services
 	docker-compose up -d --remove-orphans
@@ -19,7 +22,7 @@ build:								## Build all services containers
 	docker-compose build
 
 shell: container-elixir_pokedex		## Enter into elixir_pokedex service
-	docker-compose exec elixir_pokedex bash
+	${exec-in-docker} bash
 
 halt:								## Shoutdown all services containers
 	docker-compose down

@@ -8,8 +8,8 @@ services:
     image: elixir_pokedex:latest
     container_name: elixir_pokedex
     working_dir: /app
-#    command: tail -f /dev/null
-    command: mix serve
+    command: tail -f /dev/null
+#    command: mix serve
     security_opt:
       - seccomp:unconfined
     env_file:
