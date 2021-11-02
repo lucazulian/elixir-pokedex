@@ -26,6 +26,12 @@ services:
       options:
         loki-url: http://localhost:3100/loki/api/v1/push
 
+  livebook:
+    image: livebook/livebook
+    container_name: elixir_livebook
+    ports:
+      - 8080:8080
+
   prometheus:
     image: prom/prometheus:v2.20.1
     ports:

@@ -11,6 +11,8 @@ The API has two main endpoints:
 - basic Pokemon information
 - basic Pokemon information with a "fun" translation of the Pokemon description
 
+[![Run in Livebook](https://livebook.dev/badge/v1/blue.svg)](https://livebook.dev/run?url=https%3A%2F%2Fgithub.com%2Flucazulian%2Felixir-pokedex%2Fnotebooks%2Fpokedex.livemd)
+
 
 ## Requirements
   
