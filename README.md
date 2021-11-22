@@ -3,6 +3,7 @@ Elixir fun Pokedex in the form of REST API, with OpenTelemetry Monitoring and ob
 
 [![CI](https://github.com/lucazulian/elixir-pokedex/actions/workflows/elixir-pokedex-ci.yml/badge.svg)](https://github.com/lucazulian/elixir-pokedex/actions/workflows/elixir-pokedex-ci.yml)
 
+
 ## About the Application
 
 elixir-pokedex is a Elixir Phoenix API application that returns Pokemon information.
@@ -12,6 +13,7 @@ The API has two main endpoints:
 - basic Pokemon information with a "fun" translation of the Pokemon description
 
 [![Run in Livebook](https://livebook.dev/badge/v1/blue.svg)](https://livebook.dev/run?url=https%3A%2F%2Fgithub.com%2Flucazulian%2Felixir-pokedex%2Fblob%2Fmain%2Fnotebooks%2Fpokedex.livemd)
+
 
 ## Requirements
   
@@ -32,6 +34,7 @@ docker plugin install grafana/loki-docker-driver:latest --alias loki --grant-all
 
   [1]: https://www.conventionalcommits.org/en/v1.0.0/
 
+
 ## Getting started
 
 #### make commands
@@ -47,8 +50,10 @@ start                          Start application
 up                             Start all services
 ```
 
+
 ## How to use
 TODO
+
 
 ## Improvements / Missing parts / Bugs 
 TODO

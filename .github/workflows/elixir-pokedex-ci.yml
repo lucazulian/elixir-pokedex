@@ -72,7 +72,7 @@ jobs:
 
     - name: Run tests + Coverage
       run: |
-        mix coveralls
+        mix coveralls --trace
 
     - name: Run mutation tests
       run: |
