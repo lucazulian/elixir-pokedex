@@ -1,0 +1,9 @@
+<!-- livebook:{"autosave_interval_s":30} -->
+
+# Use LiveBook with existing application
+
+## Section
+
+```elixir
+ElixirPokedex.Pokeapi.Client.get_by_name("bulbasaur")
+```

@@ -8,15 +8,15 @@ services:
     image: elixir_pokedex:latest
     container_name: elixir_pokedex
     working_dir: /app
-    command: tail -f /dev/null
+#    command: tail -f /dev/null
 #    command: mix serve
+    command: elixir --name pokedex@elixir_pokedex --cookie f7e38a53-e82f-42fc-ba27-19102bc799bb -S mix phx.server
     security_opt:
       - seccomp:unconfined
     env_file:
       - .env.dev
     ports:
       - 4000:4000
-      - 4369:4369
     volumes:
       - .:/app
       - ./.volumes/elixir_pokedex/_build:/app/_build
@@ -31,13 +31,19 @@ services:
     container_name: elixir_livebook
     ports:
       - 8080:8080
+    volumes:
+      - ./notebooks/:/notebooks/
+    environment:
+      - LIVEBOOK_COOKIE=test
+      - RELEASE_NODE=node@livebook
+      - RELEASE_COOKIE=f7e38a53-e82f-42fc-ba27-19102bc799bb
 
   prometheus:
     image: prom/prometheus:v2.20.1
     ports:
       - 9090:9090
     volumes:
-      - ./prometheus.yml/:/etc/prometheus/config.yml
+      - ./.docker-compose/prometheus.yml:/etc/prometheus/config.yml
     command:
       - '--config.file=/etc/prometheus/config.yml'
       - '--storage.tsdb.path=/prometheus'
@@ -49,7 +55,7 @@ services:
     ports:
       - 5000:3000
     volumes:
-      - ./grafana-datasources.yaml:/etc/grafana/provisioning/datasources/datasources.yaml
+      - ./.docker-compose/grafana-datasources.yaml:/etc/grafana/provisioning/datasources/datasources.yaml
     environment:
       - GF_AUTH_ANONYMOUS_ENABLED=true
       - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
@@ -67,7 +73,7 @@ services:
     image: grafana/tempo:1.1.0
     command: ["-config.file=/etc/tempo.yaml"]
     volumes:
-      - ./tempo.yaml:/etc/tempo.yaml
+      - ./.docker-compose/tempo.yaml:/etc/tempo.yaml
     ports:
       - 8000:8000 # tempo
       - 55681:55681 # otlp http

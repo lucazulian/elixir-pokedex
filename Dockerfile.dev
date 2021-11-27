@@ -8,6 +8,6 @@ RUN apk add --no-cache \
     bash \
     git
 
-# RUN mix local.hex --force && mix local.rebar --force
+RUN mix local.hex --force && mix local.rebar --force
 
 ENV ERL_AFLAGS "-kernel shell_history enabled"
