@@ -2,8 +2,56 @@
 
 # Use LiveBook with existing application
 
-## Section
+## Nodes
 
 ```elixir
-ElixirPokedex.Pokeapi.Client.get_by_name("bulbasaur")
+Node.list()
+```
+
+## Providers
+
+call **pokeapi** to `/pokemon-species/:name` endpoint
+
+```elixir
+poke_api_response = ElixirPokedex.Pokeapi.Client.get_by_name("bulbasaur")
+```
+
+```elixir
+alias VegaLite, as: Vl
+
+personality_counts = %{any: 77, extrovert: 10, introvert: 13}
+
+# Convert the raw data into a Pie Chart friendly format
+data =
+  Enum.map(personality_counts, fn {type, count} ->
+    %{"personality" => Atom.to_string(type), "value" => count}
+  end)
+
+Vl.new()
+|> Vl.data_from_values(data)
+|> Vl.mark(:arc)
+|> Vl.encode_field(:theta, "value", type: :quantitative)
+|> Vl.encode_field(:color, "personality", type: :nominal)
+|> Vl.config(view: [stroke: nil])
+```
+
+```elixir
+# Convert the raw data into a Bar Chart friendly format
+data =
+  Enum.map(personality_counts, fn {type, count} ->
+    %{"Personality" => Atom.to_string(type), "Question Count" => count}
+  end)
+
+# Sort the data by counts to order the results
+data = Enum.sort_by(data, & &1["Question Count"], :desc)
+
+Vl.new(width: 300, height: 300)
+|> Vl.data_from_values(data)
+|> Vl.mark(:bar)
+|> Vl.encode_field(:x, "Personality",
+  type: :nominal,
+  axis: [label_angle: 0],
+  sort: [field: "Question Count", order: "descending"]
+)
+|> Vl.encode_field(:y, "Question Count", type: :quantitative)
 ```

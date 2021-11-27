@@ -34,9 +34,9 @@ services:
     volumes:
       - ./notebooks/:/notebooks/
     environment:
-      - LIVEBOOK_COOKIE=test
       - RELEASE_NODE=node@livebook
       - RELEASE_COOKIE=f7e38a53-e82f-42fc-ba27-19102bc799bb
+      - LIVEBOOK_PASSWORD=elixir-pokedex
 
   prometheus:
     image: prom/prometheus:v2.20.1

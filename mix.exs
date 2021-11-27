@@ -46,9 +46,14 @@ defmodule ElixirPokedex.MixProject do
       {:opentelemetry, "~> 1.0.0-rc.3"},
       {:opentelemetry_api, "1.0.0-rc.3.2"},
       {:opentelemetry_exporter, "~> 1.0.0-rc.3"},
+      {:opentelemetry_phoenix, "~> 1.0.0-rc.3"},
       {:opentelemetry_logger_metadata, "~> 0.1.0-rc.3"},
       {:prometheus_ex, "~> 3.0"},
-      {:prometheus_plugs, "~> 1.1.1"}
+      {:prometheus_plugs, "~> 1.1.1"},
+
+      # Graphing/charting - for Livebook or analysis
+      {:vega_lite, "~> 0.1.0"},
+      {:kino, "~> 0.1.0"}
     ]
   end
 
