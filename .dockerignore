@@ -1,0 +1,14 @@
+_build/
+deps/
+doc/
+.git/
+.gitignore
+Dockerfile.dev
+Dockerfile
+Makefile
+test/
+.volumes/
+.env.dev
+.docker-compose/
+coveralls.json
+notebooks/

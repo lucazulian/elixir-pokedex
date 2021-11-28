@@ -31,8 +31,14 @@ docker plugin install grafana/loki-docker-driver:latest --alias loki --grant-all
 ## Repository conventions
 
   * [Conventional Commits][1]
+  * [Elixir Style Guide][2]
 
   [1]: https://www.conventionalcommits.org/en/v1.0.0/
+  [2]: https://github.com/lexmag/elixir-style-guide
+
+
+## Guides
+  Documentation and various guides can be found at [doc folder](docs)
 
 
 ## Getting started

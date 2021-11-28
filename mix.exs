@@ -52,8 +52,8 @@ defmodule ElixirPokedex.MixProject do
       {:prometheus_plugs, "~> 1.1.1"},
 
       # Graphing/charting - for Livebook or analysis
-      {:vega_lite, "~> 0.1.0"},
-      {:kino, "~> 0.1.0"}
+      {:vega_lite, "~> 0.1.0", only: [:dev]},
+      {:kino, "~> 0.1.0", only: [:dev]}
     ]
   end
 

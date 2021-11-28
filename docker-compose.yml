@@ -10,7 +10,7 @@ services:
     working_dir: /app
 #    command: tail -f /dev/null
 #    command: mix serve
-    command: elixir --name pokedex@elixir_pokedex --cookie f7e38a53-e82f-42fc-ba27-19102bc799bb -S mix phx.server
+    command: MIX_ENV=dev elixir --name pokedex@elixir_pokedex --cookie f7e38a53-e82f-42fc-ba27-19102bc799bb -S mix phx.server
     security_opt:
       - seccomp:unconfined
     env_file:
