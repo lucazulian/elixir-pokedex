@@ -32,6 +32,7 @@ defmodule ElixirPokedex.MixProject do
       {:credo, "~> 1.5", only: [:dev], runtime: false},
       {:dialyxir, "~> 1.1", only: [:dev], runtime: false},
       {:excoveralls, "~> 0.14.4", only: [:dev, :test]},
+      {:exvcr, "~> 0.13.2", only: :test},
       {:gettext, "~> 0.18"},
       {:jason, "~> 1.2"},
       {:muzak, "~> 1.1"},
@@ -88,7 +89,11 @@ defmodule ElixirPokedex.MixProject do
       coveralls: :test,
       "coveralls.html": :test,
       muzak: :test,
-      t: :test
+      t: :test,
+      vcr: :test,
+      "vcr.delete": :test,
+      "vcr.check": :test,
+      "vcr.show": :test
     ]
   end
 end

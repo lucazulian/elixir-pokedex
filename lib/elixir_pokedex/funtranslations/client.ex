@@ -10,7 +10,7 @@ defmodule ElixirPokedex.Funtranslations.Client do
   @user_agent Application.compile_env!(:elixir_pokedex, :user_agent)
   @type translation_type :: :yoda | :shakespeare
 
-  plug Tesla.Middleware.BaseUrl, "https://api.funtranslations.com"
+  plug Tesla.Middleware.BaseUrl, "http://api.funtranslations.com"
 
   plug Tesla.Middleware.Headers, [
     {"content-type", "application/json; charset=utf-8"},
@@ -23,6 +23,7 @@ defmodule ElixirPokedex.Funtranslations.Client do
   @spec translate(text :: String.t(), translator_type :: translation_type()) ::
           {:ok, Tesla.Env.t()} | {:error, any()}
   def translate(text, translator_type) do
-    get("translate/#{translator_type}?text=#{text}")
+    query = URI.encode_query(%{"text" => text})
+    get("translate/#{translator_type}?#{query}")
   end
 end

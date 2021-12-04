@@ -1,0 +1,38 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "content-type": "application/json; charset=utf-8",
+        "user-agent": "elixir_pokedex/0.1.0 tesla"
+      },
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "http://api.funtranslations.com/translate/yoda?text=hello+world%21"
+    },
+    "response": {
+      "binary": false,
+      "body": "{\n    \"success\": {\n        \"total\": 1\n    },\n    \"contents\": {\n        \"translated\": \"Force be with you world!\",\n        \"text\": \"hello world!\",\n        \"translation\": \"yoda\"\n    }\n}",
+      "headers": {
+        "Date": "Sat, 04 Dec 2021 19:29:00 GMT",
+        "Server": "Apache",
+        "Access-Control-Allow-Origin": "*",
+        "Vary": "Accept,User-Agent",
+        "X-Auth-Status": "true",
+        "X-RateLimit-Limit": "5 per hour",
+        "X-RateLimit-Remaining": "5",
+        "Cache-Control": "private, max-age=43200, pre-check=86400, post-check=43200",
+        "Expires": "Sun, 05 Dec 2021 07:29:00 GMT",
+        "X-Powered-By": "Luracast Restler v3.0.0rc3",
+        "Content-Language": "en",
+        "Upgrade": "h2",
+        "Connection": "Upgrade",
+        "Transfer-Encoding": "chunked",
+        "Content-Type": "application/json; charset=utf-8"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]
