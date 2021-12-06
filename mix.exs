@@ -54,7 +54,7 @@ defmodule ElixirPokedex.MixProject do
 
       # Graphing/charting - for Livebook or analysis
       {:vega_lite, "~> 0.1.0", only: [:dev]},
-      {:kino, "~> 0.3.1", only: [:dev]}
+      {:kino, "~> 0.4.1", only: [:dev]}
     ]
   end
 
