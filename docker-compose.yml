@@ -19,6 +19,7 @@ services:
       - 4000:4000
     volumes:
       - .:/app
+      - ./.volumes/elixir_pokedex/deps:/app/deps
       - ./.volumes/elixir_pokedex/_build:/app/_build
       - /var/run/docker.sock:/var/run/docker.sock
     logging:

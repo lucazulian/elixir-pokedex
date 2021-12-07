@@ -79,7 +79,7 @@ defmodule ElixirPokedex.MixProject do
       ignore_warnings: ".dialyzer_ignore.exs",
       plt_add_apps: [:ex_unit, :jason, :mix],
       plt_add_deps: :app_tree,
-      plt_file: {:no_warn, "priv/plts/elixir_pokedex_1_12_3_otp_erts_12_0_4.plt"},
+      plt_file: {:no_warn, "priv/plts/elixir_pokedex_1_13_0_erlang_24_1_7.plt"},
       list_unused_filters: true
     ]
   end
