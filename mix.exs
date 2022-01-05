@@ -48,7 +48,7 @@ defmodule ElixirPokedex.MixProject do
       {:telemetry_metrics, "~> 0.6"},
       {:telemetry_poller, "~> 1.0"},
       {:opentelemetry, "~> 1.0.0-rc.3"},
-      {:opentelemetry_api, "1.0.0-rc.3.2"},
+      {:opentelemetry_api, "1.0.0"},
       {:opentelemetry_exporter, "~> 1.0.0-rc.3"},
       {:opentelemetry_phoenix, "~> 1.0.0-rc.3"},
       {:opentelemetry_logger_metadata, "~> 0.1.0-rc.3"},
