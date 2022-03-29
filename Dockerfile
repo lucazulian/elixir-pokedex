@@ -47,7 +47,7 @@ RUN mix release
 
 # start a new build stage so that the final image will only contain
 # the compiled release and other runtime necessities
-FROM alpine:3.15.2 AS app
+FROM alpine:3.15.3 AS app
 RUN apk add --no-cache libstdc++ openssl ncurses-libs
 
 ARG MIX_ENV
